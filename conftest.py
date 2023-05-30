@@ -20,6 +20,7 @@ def browser(request):
         options.add_experimental_option("excludeSwitches", ["enable-automation"])
         options.add_experimental_option('useAutomationExtension', False)
         options.add_experimental_option('prefs', {'intl.accept_languages': user_language})
+        options.add_experimental_option('excludeSwitches', ['enable-logging'])
         browser = webdriver.Chrome(options=options)
     elif browser == "Firefox":
         fp = webdriver.FirefoxOptions()

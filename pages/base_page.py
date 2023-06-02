@@ -1,7 +1,7 @@
 from selenium.common.exceptions import NoSuchElementException
 
 
-class BasePage():
+class BasePage:
 
     def __init__(self, browser, url, timeout=10):
         self.browser = browser
@@ -18,3 +18,9 @@ class BasePage():
             return False
         return True
 
+    def availability_in_link(self, x):
+        try:
+            if x in self.browser.current_url:
+                return True
+        except AssertionError:
+            return False

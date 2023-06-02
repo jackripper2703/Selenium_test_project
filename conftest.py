@@ -1,6 +1,5 @@
 import pytest
 from selenium import webdriver
-from selenium.webdriver.common.by import By
 
 
 def pytest_addoption(parser):
@@ -16,7 +15,7 @@ def browser(request):
     browser = request.config.getoption("browser")
     if browser == "Chrome":
         options = webdriver.ChromeOptions()
-        # options.add_argument("--headless")
+        options.add_argument("--headless")
         options.add_experimental_option("excludeSwitches", ["enable-automation"])
         options.add_experimental_option('useAutomationExtension', False)
         options.add_experimental_option('prefs', {'intl.accept_languages': user_language})

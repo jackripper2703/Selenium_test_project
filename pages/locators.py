@@ -19,3 +19,14 @@ class LoginPageLocators:
 
     LOGIN = (By.CSS_SELECTOR, "[value='Log In']")
     REGISTER = (By.CSS_SELECTOR, "[value='Register']")
+
+
+class ProductPageLocators:
+
+    PRODUCT_NAME = (By.CSS_SELECTOR, ".product_main h1")
+    PRODUCT_PRICE = (By.CSS_SELECTOR, ".product_main h1+p")
+
+    ADD_TO_BASKET = (By.CSS_SELECTOR, "button[type='submit'].btn-add-to-basket")
+
+    ALERT_PRODUCT_NAME = (By.CSS_SELECTOR, "#messages .alert:nth-last-child(3) strong")
+    ALERT_PRODUCT_PRICE = (By.CSS_SELECTOR, "#messages .alert:nth-last-child(1) strong")

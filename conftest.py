@@ -3,7 +3,7 @@ from selenium import webdriver
 
 
 def pytest_addoption(parser):
-    parser.addoption('--language', action='store', default="en",
+    parser.addoption('--language', action='store', default="eu",
                      help="Choose language: '--language=en' or '--language=ru'")
     parser.addoption('--browser', action='store', default="Chrome",
                      help="Choose browser: chrome or firefox")
@@ -24,7 +24,7 @@ def browser(request):
     elif browser == "Firefox":
         fp = webdriver.FirefoxOptions()
         fp.set_preference("intl.accept_languages", user_language)
-        browser = webdriver.Firefox(options=fp)
+        browser = webdriver.Firefox(options=fp, executable_path=r"C:\geckodriver\geckodriver.exe")
     else:
         raise pytest.UsageError("--browser_name should be chrome or firefox")
     yield browser

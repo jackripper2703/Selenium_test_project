@@ -9,7 +9,7 @@ class LoginPage(BasePage):
         self.should_be_register_form()
 
     def should_be_login_url(self):
-        assert self.availability_in_link("login"), "Подстрока 'login' нет в текущем url браузера"
+        assert self.availability_in_link("login"), "Подстроки 'login' нет в текущем url браузера"
 
     def should_be_login_form(self):
         assert self.is_element_present(*LoginPageLocators.LOGIN_FORM), "Форма логина отсутствует"

@@ -3,11 +3,13 @@ from selenium.webdriver.common.by import By
 
 class MainPageLocators:
     LOGIN_LINK = (By.CSS_SELECTOR, "[id='login_link']")
-    BASKET_TRANSFER = (By.CSS_SELECTOR, "span.btn-group>a[href*='/basket/']")
+    BASKET_TRANSFER = (By.CSS_SELECTOR, ".icon-signin")
 
 
 class BasePageLocators:
     USER_ICON = (By.CSS_SELECTOR, ".icon-user")
+    LOGIN_LINK = (By.CSS_SELECTOR, "[id='login_link']")
+    LOGIN_LINK_INVALID = (By.CSS_SELECTOR, "[id='login_link']")
 
 
 class LoginPageLocators:

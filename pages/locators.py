@@ -3,6 +3,11 @@ from selenium.webdriver.common.by import By
 
 class MainPageLocators:
     LOGIN_LINK = (By.CSS_SELECTOR, "[id='login_link']")
+    BASKET_TRANSFER = (By.CSS_SELECTOR, "span.btn-group>a[href*='/basket/']")
+
+
+class BasePageLocators:
+    USER_ICON = (By.CSS_SELECTOR, ".icon-user")
 
 
 class LoginPageLocators:
@@ -28,5 +33,10 @@ class ProductPageLocators:
 
     ADD_TO_BASKET = (By.CSS_SELECTOR, "button[type='submit'].btn-add-to-basket")
 
-    ALERT_PRODUCT_NAME = (By.CSS_SELECTOR, "#messages .alert:nth-last-child(3) strong")
+    SUCCESS_MESSAGE = (By.CSS_SELECTOR, "#messages .alert:nth-last-child(3) strong")
     ALERT_PRODUCT_PRICE = (By.CSS_SELECTOR, "#messages .alert:nth-last-child(1) strong")
+
+
+class BasketPageLocators:
+    BASKET_CLEAN = (By.CSS_SELECTOR, "#content_inner p")
+    PRODUCT_IN_BASKET = (By.CSS_SELECTOR, ".basket-items")

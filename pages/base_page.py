@@ -1,15 +1,16 @@
 import math
-
-from selenium.common.exceptions import NoSuchElementException
-from selenium.common.exceptions import NoAlertPresentException
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+from .locators import MainPageLocators, BasePageLocators
+from selenium.common.exceptions import NoSuchElementException, NoAlertPresentException, TimeoutException
 
 
 class BasePage:
 
-    def __init__(self, browser, url, timeout=50):
+    def __init__(self, browser, url, timeout=10):
         self.browser = browser
         self.url = url
-        self.browser.implicitly_wait(timeout)
+        # self.browser.implicitly_wait(timeout)
 
     def open(self):
         self.browser.get(self.url)
@@ -42,10 +43,33 @@ class BasePage:
         except NoAlertPresentException:
             print("No second alert presented")
 
-    def comparison(self, x, y):
-        x_text = x.text
-        y_text = y.text
-        if x_text == y_text:
+    def comparison(self, showcase, basket):
+        showcase_text = showcase.text
+        basket_text = basket.text
+        if showcase_text == basket_text:
             return True
         else:
             return False
+
+    def is_not_element_present(self, how, what, timeout=4):
+        try:
+            WebDriverWait(self.browser, timeout).until(EC.presence_of_element_located((how, what)))
+        except TimeoutException:
+            return True
+        return False
+
+    def is_disappeared(self, how, what, timeout=4):
+        try:
+            WebDriverWait(self.browser, timeout, 1, TimeoutException). \
+                until_not(EC.presence_of_element_located((how, what)))
+        except TimeoutException:
+            return False
+        return True
+
+    def go_to_basket(self):
+        add_to_basket = self.browser.find_element(*MainPageLocators.BASKET_TRANSFER)
+        add_to_basket.click()
+
+    def should_be_authorized_user(self):
+        assert self.is_element_present(*BasePageLocators.USER_ICON), "Значок пользователя не отображается," \
+                                                                     "вероятно, неавторизованный пользователь"

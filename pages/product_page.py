@@ -26,5 +26,13 @@ class ProductPage(BasePage):
 
     def msg_product_added(self):
         assert self.comparison(self.browser.find_element(*ProductPageLocators.PRODUCT_NAME),
-                               self.browser.find_element(*ProductPageLocators.ALERT_PRODUCT_NAME)), \
+                               self.browser.find_element(*ProductPageLocators.SUCCESS_MESSAGE)), \
             "Название товара добавленного в корзину отличается от выбранного товара"
+
+    def should_not_be_success_message(self):
+        assert self.is_not_element_present(*ProductPageLocators.SUCCESS_MESSAGE), \
+            "Сообщение об успешном завершении отображается, но не должно быть"
+
+    def should_disappeared(self):
+        assert self.is_disappeared(*ProductPageLocators.SUCCESS_MESSAGE), \
+            "Сообщение об исчезновения элемента, но не должно быть"

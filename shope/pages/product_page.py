@@ -7,7 +7,6 @@ class ProductPage(BasePage):
     def collection(self):
         self.go_to_product_page()
         self.solve_quiz_and_get_code()
-        # self.should_be_url()
         self.msg_cost_of_the_basket()
         self.msg_product_added()
 
